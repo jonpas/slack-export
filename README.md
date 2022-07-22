@@ -25,14 +25,13 @@ This use of the API is blessed by Slack : https://get.slack.help/hc/en-us/articl
 " If you want to export the contents of your own private groups and direct messages
 please see our API documentation."
 
-One way to get your token is to obtain it here:
+One way to get your token is via a custom Slack App:
 
-https://api.slack.com/custom-integrations/legacy-tokens
+https://github.com/zach-snell/slack-export/issues/33#issuecomment-647113733
 
 ## Dependencies
 ```
-pip install slacker # https://github.com/os/slacker
-pip install pick # https://github.com/wong2/pick
+pip install -r requirements.txt
 ```
 
 ## Basic Usage

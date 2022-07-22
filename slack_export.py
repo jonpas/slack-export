@@ -274,10 +274,15 @@ def doTestAuth():
 # Since Slacker does not Cache.. populate some reused lists
 def bootstrapKeyValues():
     global users, channels, groups, dms
-    users = slack.users.list().body['members']
+    next_cursor = ""
+    users = []
+    while next_cursor != "" or users == []:
+        users_reply = slack.users.list(cursor=next_cursor)
+        next_cursor = users_reply.body['response_metadata']['next_cursor']
+        users += users_reply.body['members']
     print("Found {0} Users".format(len(users)))
     sleep(1)
-    
+
     channels = slack.conversations.list(limit = 1000, types=('public_channel')).body['channels']
     print("Found {0} Public Channels".format(len(channels)))
     sleep(1)
